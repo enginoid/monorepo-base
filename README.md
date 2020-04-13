@@ -1,3 +1,4 @@
+[![Build Status](https://api.cirrus-ci.com/github/enginoid/monorepo-base.svg)](https://cirrus-ci.com/github/enginoid/monorepo-base)
 
 # Prerequisites
 
