@@ -35,7 +35,7 @@ If you want to deploy to a kubernetes cluster...
 If you want to set up a kubernetes cluster in GCP with Terraform...
    * `terraform` (`brew install terraform` or [instructions](https://learn.hashicorp.com/terraform/getting-started/install.html#installing-terraform))
 
-## Cheat sheet
+### Cheat sheet
 
 | Action | Command |
 | --- | --- |
@@ -45,7 +45,13 @@ If you want to set up a kubernetes cluster in GCP with Terraform...
 | Deploy `//service/ping` to staging | `bazel run //services/ping:staging.apply --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64` |
 | Run `//cmd/ping` (as binary, with options) | `bazel run //cmd/ping -- --address=1.2.3.4:50051` |
 
-# Detailed guides
+### 🚧 Work in progress! 🚧
+
+This monorepo is functionally complete – you can clone it and get it to work if you look through how it links together and you're willing to battle gcloud a bit. But it's sorely missing documentation for how to set up the infrastructure and deploy to kubernetes, as well as some inline documentation.
+
+Coming soon – please bear with me!
+
+### Detailed guides
 
  * Development
      * [Quickstart](./docs/development/quickstart.md): running, building and making changes locally.
@@ -57,7 +63,7 @@ If you want to set up a kubernetes cluster in GCP with Terraform...
  * [Deploying infrastructure](./docs/deploying-infrastructure.md) with Terraform.
  * [Potential](./docs/potential.md): how you could extend this.
 
-# ❤️ ️Gratitude & Credits ❤️ ️
+### ❤️ ️Gratitude & Credits ❤️ ️
 
 I first set out to create a monorepo template in 2017, when the landscape of technologies was quite different. The project was [makesomecloud](https://github.com/enginoid/makesomecloud), and it used Pants, a painstakingly hand-tuned concourse setup, sprinkled with lots of manual commands to make up for how poorly different technologies naturally glued together at the time. 
 
