@@ -1,0 +1,28 @@
+load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library")
+
+package(default_visibility = ["//visibility:public"])
+
+jsonnet_library(
+    name = "deploy_lib",
+    srcs = ["deployment.libsonnet"],
+)
+
+jsonnet_library(
+    name = "service_lib",
+    srcs = ["service.libsonnet"],
+)
+
+jsonnet_library(
+    name = "container_lib",
+    srcs = ["container.libsonnet"],
+)
+
+jsonnet_library(
+    name = "microservice_lib",
+    srcs = ["microservice.libsonnet"],
+    deps = [
+        "//services:container_lib",
+        "//services:deploy_lib",
+        "//services:service_lib",
+    ],
+)

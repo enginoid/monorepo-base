@@ -1,0 +1,23 @@
+load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_to_json")
+
+package(default_visibility = ["//visibility:public"])
+
+jsonnet_to_json(
+    name = "production",
+    src = "production.jsonnet",
+    outs = ["production.json"],
+    deps = [
+        "//services:microservice_lib",
+    ],
+    yaml_stream = 1,
+)
+
+jsonnet_to_json(
+    name = "staging",
+    src = "staging.jsonnet",
+    outs = ["staging.json"],
+    deps = [
+        "//services:microservice_lib",
+    ],
+    yaml_stream = 1,
+)

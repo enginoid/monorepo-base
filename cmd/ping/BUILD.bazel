@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/enginoid/monorepo-base/cmd/ping",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//services/ping/proto:go_default_library",
+        "@com_github_urfave_cli_v2//:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "ping",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)

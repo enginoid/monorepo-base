@@ -1,0 +1,4 @@
+container:
+  image: l.gcr.io/google/bazel:latest
+task:
+  build_script: bazel build //...

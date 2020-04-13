@@ -1,0 +1,43 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
+load("@k8s_production//:defaults.bzl", "k8s_production")
+load("@k8s_staging//:defaults.bzl", "k8s_staging")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/enginoid/monorepo-base/services/ping",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//services/ping/proto:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "ping",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
+
+go_image(
+    name = "docker_image",
+    embed = [":go_default_library"],
+    importpath = "github.com/enginoid/monorepo-base/services/ping",
+)
+
+k8s_production(
+    name = "production",
+    template = "//services/ping/manifests:production.json",
+    images = {
+        "eu.gcr.io/monorepo-base/service-ping:production": ":docker_image",
+    },
+)
+
+k8s_staging(
+    name = "staging",
+    template = "//services/ping/manifests:staging.json",
+    images = {
+        "eu.gcr.io/monorepo-base/service-ping:staging": ":docker_image",
+    },
+)
