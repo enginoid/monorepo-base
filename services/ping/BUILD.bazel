@@ -10,6 +10,7 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//services/ping/proto:go_default_library",
+        "//services/ping/server:go_default_library",
         "@org_golang_google_grpc//:go_default_library",
     ],
 )

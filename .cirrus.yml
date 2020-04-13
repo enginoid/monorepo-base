@@ -1,7 +1,7 @@
 container:
   image: l.gcr.io/google/bazel:latest
 task:
-  build_script: bazel build
+  test: bazel test
     --spawn_strategy=sandboxed
     --strategy=Javac=sandboxed
     --genrule_strategy=sandboxed
