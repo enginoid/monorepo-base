@@ -1,5 +1,7 @@
+# Deploying infrastructure
 
  - [ ] Talk about `bazel run //cmd/setup`
+ - [ ] Turn this scratchpad into coherent instructions:
 
 ```
 # Set up a project and select it.

@@ -1,3 +1,4 @@
+# Quickstart
 
 ## Running a service and its client binary
 
@@ -40,7 +41,7 @@ The manifests are almost identical. The only difference I've configured so far i
 
 ### Deploying the service
 
-**To run these commands, you need to update your [config/k8s.bzl](./config/k8s.bzl).** To learn how, see [Deploying services](../services/deploying.md).
+**To run these commands, you need to update your [config/k8s.bzl](/config/k8s.bzl).** To learn how, see [Deploying services](../services/deploying.md).
 
 This means that these commands will deploy the manifests (as printed in the commands above) to these clusters upon running these commands:
 

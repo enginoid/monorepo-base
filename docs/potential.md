@@ -5,7 +5,7 @@ This section describes where you could take this monorepo, by explaining capabil
 ## Possibilities
 
  - [ ] TODO: Phoenix environments (per-developer, per-build etc.)
- - [ ] TODO: Monorepo tools and shorthands that could be useful.
+ - [ ] TODO: Monorepo tools and aliases that could be useful to make a nicer experience.
 
 ## Capabilities
 

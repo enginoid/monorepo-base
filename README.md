@@ -18,7 +18,7 @@ A Bazel monorepo you can clone, adapt, and use...
     - [x] ...through a script that sets up your project (`//cmd/setup`)
     - [x] ...and some Terraform definitions to set up a cluster (`./terraform`)
   - [x] ...that tests everything in Cirrus CI
-    - [x] ...with a [really simple config](./cirrus.yml), even as your project gets more complex
+    - [x] ...with a [really simple config](./.cirrus.yml), even as your project gets more complex
     - [x] ...and caching that makes your builds quick, even as your project grows
 
 ### Prerequisites
