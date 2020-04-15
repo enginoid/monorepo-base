@@ -89,17 +89,17 @@ load("@io_bazel_rules_k8s//k8s:k8s_go_deps.bzl", k8s_go_deps = "deps")
 k8s_go_deps()
 
 load("@io_bazel_rules_k8s//k8s:k8s.bzl", "k8s_defaults")
-load("//config:k8s.bzl", "KUBERNETES_PRODUCTION_CLUSTER", "KUBERNETES_STAGING_CLUSTER")
+load("//config:k8s.bzl", "KUBERNETES_PRODUCTION_CONTEXT", "KUBERNETES_STAGING_CONTEXT")
 
 k8s_defaults(
     name = "k8s_production",
-    cluster = KUBERNETES_PRODUCTION_CLUSTER,
+    context = KUBERNETES_PRODUCTION_CONTEXT,
     namespace = "default",
 )
 
 k8s_defaults(
     name = "k8s_staging",
-    cluster = KUBERNETES_STAGING_CLUSTER,
+    context = KUBERNETES_STAGING_CONTEXT,
     namespace = "default",
 )
 
