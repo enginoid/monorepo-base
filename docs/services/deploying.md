@@ -112,7 +112,3 @@ For example:
   * Each feature branch might have a `branch-[name]` namespace.
   
 If you use this arrangement, you might want to set the namespace for your context to something like `developer-[name]`. 
-
-# TODO
-
- - [ ] Why `--platform` is necessary.
