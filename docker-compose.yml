@@ -1,0 +1,12 @@
+version: '2.0'
+services:
+  buildfarm-server:
+    image: bazel/services/buildfarm/server:docker_image
+    ports:
+    - "8980:8980"
+  buildfarm-worker:
+    image: bazel/services/buildfarm/worker:docker_image
+    links:
+        - buildfarm-server
+    depends_on:
+        - buildfarm-server

@@ -1,0 +1,37 @@
+load("@io_bazel_rules_docker//container:image.bzl", "container_image")
+load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_to_json")
+load("@k8s_staging//:defaults.bzl", "k8s_staging")
+
+container_image(
+    name = "docker_image",
+    base = "@java_image_base//image",
+    cmd = [
+        "/buildfarm-server_deploy.jar",
+        "/server.config",
+    ],
+    files = [
+        "@bazel_buildfarm//src/main/java/build/buildfarm:buildfarm-server_deploy.jar",
+        "server.config"
+    ],
+    ports = [
+        "8980",
+    ],
+)
+
+jsonnet_to_json(
+    name = "staging",
+    src = "staging.jsonnet",
+    outs = ["staging.json"],
+    deps = [
+        "//services:microservice_lib",
+    ],
+    yaml_stream = 1,
+)
+
+k8s_staging(
+    name = "buildfarm-server-staging",
+    template = ":staging.json",
+    images = {
+        "eu.gcr.io/monorepo-base/buildfarm-server:staging": ":docker_image",
+    },
+)
