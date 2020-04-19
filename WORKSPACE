@@ -117,7 +117,8 @@ load(
 container_pull(
     name = "rbe_ubuntu",
     registry = "marketplace.gcr.io",
-    repository = "google/rbe-ubuntu18-04",
+    repository = "google/rbe-ubuntu16-04",
+    digest = "sha256:5464e3e83dc656fc6e4eae6a01f5c2645f1f7e95854b3802b85e86484132d90e"
 )
 
 ################################################################
@@ -177,7 +178,7 @@ jsonnet_repositories()
 git_repository(
     name = "bazel_buildfarm",
     commit = "4b78c08f353749bf9954a89579b547409f2dcd90",
-    remote = "git@github.com:bazelbuild/bazel-buildfarm.git",
+    remote = "https://github.com/bazelbuild/bazel-buildfarm.git",
 )
 
 http_archive(

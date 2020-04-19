@@ -6,6 +6,8 @@ container_image(
     name = "docker_image",
     base = "@rbe_ubuntu//image",
     cmd = [
+        "java",
+        "-jar",
         "/buildfarm-operationqueue-worker_deploy.jar",
         "/worker.config",
     ],
