@@ -38,6 +38,36 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 gazelle_dependencies()
 
 ################################################################################################
+# rules_rust
+################################################################################################
+
+git_repository(
+    name = "io_bazel_rules_rust",
+    commit = "0369b8e033dc8a5522925bf7e9c3da8f9deec241",
+    remote = "https://github.com/bazelbuild/rules_rust.git",
+)
+
+# https://github.com/bazelbuild/bazel-skylib/releases
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "d8c45ee70ec39a57e7a05e5027c32b1576cc7f16d9dd37135b0eddde45cf1b10",
+    strip_prefix = "bazel-skylib-1.0.2",
+    url = "https://github.com/bazelbuild/bazel-skylib/archive/1.0.2.tar.gz",
+)
+
+load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
+rust_repositories()
+
+load("@io_bazel_rules_rust//:workspace.bzl", "bazel_version")
+bazel_version(name = "bazel_version")
+
+load("@io_bazel_rules_rust//proto:repositories.bzl", "rust_proto_repositories")
+rust_proto_repositories()
+
+load("//third_party/cargo:crates.bzl", "raze_fetch_remote_crates")
+raze_fetch_remote_crates()
+
+################################################################################################
 # protobuf_deps
 ################################################################################################
 

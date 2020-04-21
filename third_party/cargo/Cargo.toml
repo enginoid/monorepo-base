@@ -1,0 +1,15 @@
+[package]
+name = "compile_with_bazel"
+version = "0.0.0"
+
+# Mandatory (or Cargo tooling is unhappy)
+[lib]
+path = "fake_lib.rs"
+
+[dependencies]
+clap = "2.33.0"
+
+[raze]
+genmode = "Remote"
+
+workspace_path = "//third_party/cargo"
