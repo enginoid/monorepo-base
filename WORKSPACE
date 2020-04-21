@@ -43,7 +43,7 @@ gazelle_dependencies()
 
 git_repository(
     name = "io_bazel_rules_rust",
-    commit = "0369b8e033dc8a5522925bf7e9c3da8f9deec241",
+    commit = "31892465c40f8233db0f84600345ecd13ccd1d01",
     remote = "https://github.com/bazelbuild/rules_rust.git",
 )
 
@@ -56,7 +56,7 @@ http_archive(
 )
 
 load("@io_bazel_rules_rust//rust:repositories.bzl", "rust_repositories")
-rust_repositories()
+rust_repositories(version = "1.42.0")
 
 load("@io_bazel_rules_rust//:workspace.bzl", "bazel_version")
 bazel_version(name = "bazel_version")
