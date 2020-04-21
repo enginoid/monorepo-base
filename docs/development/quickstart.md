@@ -3,7 +3,7 @@
 ## Running a service and its client binary
 
 1. In one tab, run the server: `bazel run //services/ping`
-2. In another tab, run the client: `bazel run //cmd/ping`
+2. In another tab, run the client: `bazel run //cmd/ping-go-client` (or `//cmd/ping-rust-client`)
 
 The client will print:
 ```

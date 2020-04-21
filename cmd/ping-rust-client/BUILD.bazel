@@ -2,7 +2,7 @@ load("@io_bazel_rules_rust//rust:rust.bzl", "rust_binary")
 load("@io_bazel_rules_rust//proto:toolchain.bzl", "GRPC_COMPILE_DEPS")
 
 rust_binary(
-    name = "ping",
+    name = "ping-rust-client",
     srcs = ["ping.rs"],
     deps = [
         "//services/ping/proto:ping_rust_grpc",
@@ -10,4 +10,3 @@ rust_binary(
     ] + GRPC_COMPILE_DEPS,
     visibility = ["//visibility:public"],
 )
-

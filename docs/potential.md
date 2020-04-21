@@ -18,11 +18,12 @@ $ bazel query 'kind("go_(library|binary) rule", //...)'
 //services/ping:ping
 //services/ping:docker_image.binary
 //services/ping:go_default_library
+//services/ping/server:go_default_library
 //cmd/setup:setup
 //cmd/setup:go_default_library
 //cmd/setup/internal/gcloud:go_default_library
-//cmd/ping:ping
-//cmd/ping:go_default_library
+//cmd/ping-go-client:ping-go-client
+//cmd/ping-go-client:go_default_library
 //services/ping/proto:go_default_library
 ```
 
