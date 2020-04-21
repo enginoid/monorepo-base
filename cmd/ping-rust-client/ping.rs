@@ -2,10 +2,13 @@ extern crate grpc;
 extern crate ping_rust_grpc;
 extern crate clap;
 
-use ping_rust_grpc::*;
+use std::time::Duration;
+use std::net::ToSocketAddrs;
 
 use clap::{Arg, App};
-use std::net::{ToSocketAddrs};
+use grpc::ClientConf;
+
+use ping_rust_grpc::*;
 
 fn main() {
     let matches = App::new("ping client")
@@ -38,7 +41,13 @@ fn main() {
 
         println!("dialling {}...", &addr.to_string());
         println!("ping message: {:?}", req.message);
-        let client = PingClient::new_plain(&addr.ip().to_string(), addr.port(), Default::default()).unwrap();
+
+        // By default, there's no connection timeout. Make sure we exit if we're
+        // struggling to connect.
+        let mut client_config = grpc::ClientConf::new();
+        client_config.http.connection_timeout = Some(Duration::from_millis(1000));
+
+        let client = PingClient::new_plain(&addr.ip().to_string(), addr.port(), client_config).unwrap();
         let resp = client.ping(grpc::RequestOptions::new(), req);
         
         match resp.wait() {
